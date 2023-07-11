@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,21 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('listings', [
-        'gigs' => Listing::all(),
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
 
-// Route::get('/listings/{id}', function ($id) {
-//     return view('listing', [
-//         'heading' => 'Listing',
-//         'gig' => Listing::find($id),
+// Route::get('/', function () {
+//     return view('listings', [
+//         'gigs' => Listing::all(),
 //     ]);
 // });
 
-Route::get('/listings/{gig}', function (Listing $gig) {
-    return view('listing', [
-        'gig' => $gig,
-    ]);
-});
+Route::get('/listings/{gig}', [ListingController::class, 'show']);
+
+// // Route::get('/listings/{id}', function ($id) {
+// //     return view('listing', [
+// //         'heading' => 'Listing',
+// //         'gig' => Listing::find($id),
+// //     ]);
+// // });
+
+// Route::get('/listings/{gig}', function (Listing $gig) {
+//     return view('listing', [
+//         'gig' => $gig,
+//     ]);
+// });
