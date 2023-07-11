@@ -21,9 +21,15 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/listings/{id}', function ($id) {
+// Route::get('/listings/{id}', function ($id) {
+//     return view('listing', [
+//         'heading' => 'Listing',
+//         'gig' => Listing::find($id),
+//     ]);
+// });
+
+Route::get('/listings/{gig}', function (Listing $gig) {
     return view('listing', [
-        'heading' => 'Listing',
-        'gig' => Listing::find($id),
+        'gig' => $gig,
     ]);
 });
