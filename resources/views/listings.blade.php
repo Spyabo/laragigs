@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('content')
+
 <h1>{{($heading)}}</h1>
 
 @if(empty($gigs))
@@ -8,3 +12,5 @@
     <h2><a href="/listings/{{$gig['id']}}">{{$gig['title']}}</a></h2>
     <p>{{$gig['description']}}</p>
 @endforeach
+
+@endsection
