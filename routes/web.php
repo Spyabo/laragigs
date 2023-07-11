@@ -20,3 +20,10 @@ Route::get('/', function () {
         'gigs' => Listing::all(),
     ]);
 });
+
+Route::get('/listings/{id}', function ($id) {
+    return view('listing', [
+        'heading' => 'Listing',
+        'gig' => Listing::find($id),
+    ]);
+});
