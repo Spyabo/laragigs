@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('listings', [
-        'heading' => 'Listings',
         'gigs' => Listing::all(),
     ]);
 });
