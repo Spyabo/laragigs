@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Listing;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,22 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('listings', [
         'heading' => 'Listings',
-        'gigs' => [
-            [
-                'id' => 1,
-                'title' => 'PHP Developer',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni voluptatibus, voluptate voluptas? Nisi voluptate voluptas?',
-            ],
-            [
-                'id' => 2,
-                'title' => 'JS Developer',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni voluptatibus, voluptate voluptas? Nisi voluptate voluptas?',
-            ],
-            [
-                'id' => 3,
-                'title' => 'Rust Developer',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni voluptatibus, voluptate voluptas? Nisi voluptate voluptas?',
-            ],
-        ],
+        'gigs' => Listing::all(),
     ]);
 });
