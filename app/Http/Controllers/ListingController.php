@@ -22,4 +22,10 @@ class ListingController extends Controller
             'gig' => $gig,
         ]);
     }
+
+    //show create form
+    public function create()
+    {
+        return view('listings/create');
+    }
 }
