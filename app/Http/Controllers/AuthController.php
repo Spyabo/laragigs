@@ -32,6 +32,25 @@ class AuthController extends Controller
         return redirect('/')->with('form_success', 'User created and logged in');
     }
 
+    public function login()
+    {
+        return view('auth/login');
+    }
+
+    public function authenticate()
+    {
+        $validated = request()->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (auth()->attempt($validated)) {
+            return redirect('/')->with('form_success', 'You have been logged in');
+        }
+
+        return back()->withErrors(['email' => 'The provided credentials are invalid.'])->onlyInput('email');
+    }
+
     public function logout()
     {
         auth()->logout();
