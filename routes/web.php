@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ListingController;
 
 /*
@@ -56,3 +57,7 @@ Route::get('/listings/{gig}', [ListingController::class, 'show']);
 //         'gig' => $gig,
 //     ]);
 // });
+
+Route::get('/register', [AuthController::class, 'create']);
+
+Route::post('/users', [AuthController::class, 'store']);
