@@ -37,6 +37,8 @@ Route::get('/listings/create', [ListingController::class, 'create'])->middleware
 
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
+
 Route::get('/listings/{gig}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
 Route::put('/listings/{gig}', [ListingController::class, 'update'])->middleware('auth');

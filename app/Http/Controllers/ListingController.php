@@ -67,6 +67,12 @@ class ListingController extends Controller
 
     public function update(Listing $gig)
     {
+
+        //logged in user is the owner
+        if ($gig->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         //validate
         $validated = request()->validate([
             'title' => 'required',
@@ -91,8 +97,21 @@ class ListingController extends Controller
 
     public function destroy(Listing $gig)
     {
+
+        //logged in user is the owner
+        if ($gig->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $gig->delete();
 
         return redirect('/')->with('form_success', 'Listing deleted successfully');
+    }
+
+    public function manage()
+    {
+        return view('listings/manage', [
+            'gigs' => auth()->user()->gigs()->get()
+        ]);
     }
 }

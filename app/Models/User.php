@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function listings()
+    public function gigs()
     {
         return $this->hasMany(Listing::class, 'user_id');
     }
