@@ -44,6 +44,10 @@ class ListingController extends Controller
             'description' => 'required',
         ]);
 
+        if (request()->hasFile('logo')) {
+            $validated['logo'] = request()->file('logo')->store('logos', 'public');
+        }
+
         //store
         Listing::create($validated);
 
