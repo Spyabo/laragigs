@@ -31,7 +31,7 @@ class ListingController extends Controller
     }
 
     //store listing
-    public function store(Request $request)
+    public function store()
     {
         //validate
         $validated = request()->validate([
