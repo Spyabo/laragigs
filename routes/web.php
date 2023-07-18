@@ -61,3 +61,5 @@ Route::get('/listings/{gig}', [ListingController::class, 'show']);
 Route::get('/register', [AuthController::class, 'create']);
 
 Route::post('/users', [AuthController::class, 'store']);
+
+Route::post('/logout', [AuthController::class, 'logout']);

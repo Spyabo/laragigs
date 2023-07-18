@@ -31,4 +31,15 @@ class AuthController extends Controller
 
         return redirect('/')->with('form_success', 'User created and logged in');
     }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        $req = request();
+        $req->session()->invalidate();
+        $req->session()->regenerateToken();
+
+        return redirect('/')->with('form_success', 'You have been logged out!');
+    }
 }
