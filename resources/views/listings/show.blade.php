@@ -49,11 +49,16 @@
             </div>
         </div>
     </x-card>
-    <x-card class="flex p-2 mt-4 space-x-6 max-w-[100px] mx-auto">
+    <x-card class="flex p-2 mt-4 space-x-6 max-w-[200px] mx-auto">
         <a href="/listings/{{ $gig->id }}/edit">
             <i class="fa-solid fa-pen-to-square"></i>
             Edit
         </a>
+        <form action="/listings/{{ $gig->id }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+        </form>
     </x-card>
 </div>
 @endsection

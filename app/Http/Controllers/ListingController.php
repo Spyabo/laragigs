@@ -86,4 +86,11 @@ class ListingController extends Controller
         //redirect
         return redirect('/listings/' . $gig->id)->with('form_success', 'Listing updated successfully');
     }
+
+    public function destroy(Listing $gig)
+    {
+        $gig->delete();
+
+        return redirect('/')->with('form_success', 'Listing deleted successfully');
+    }
 }

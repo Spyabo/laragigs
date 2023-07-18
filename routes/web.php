@@ -40,6 +40,8 @@ Route::get('/listings/{gig}/edit', [ListingController::class, 'edit']);
 
 Route::put('/listings/{gig}', [ListingController::class, 'update']);
 
+Route::delete('/listings/{gig}', [ListingController::class, 'destroy']);
+
 Route::get('/listings/{gig}', [ListingController::class, 'show']);
 
 // // Route::get('/listings/{id}', function ($id) {
