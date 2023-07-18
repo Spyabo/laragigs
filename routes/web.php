@@ -33,15 +33,15 @@ Route::get('/', [ListingController::class, 'index']);
 //     ]);
 // });
 
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
-Route::post('/listings', [ListingController::class, 'store']);
+Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
-Route::get('/listings/{gig}/edit', [ListingController::class, 'edit']);
+Route::get('/listings/{gig}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
-Route::put('/listings/{gig}', [ListingController::class, 'update']);
+Route::put('/listings/{gig}', [ListingController::class, 'update'])->middleware('auth');
 
-Route::delete('/listings/{gig}', [ListingController::class, 'destroy']);
+Route::delete('/listings/{gig}', [ListingController::class, 'destroy'])->middleware('auth');
 
 Route::get('/listings/{gig}', [ListingController::class, 'show']);
 
@@ -58,12 +58,12 @@ Route::get('/listings/{gig}', [ListingController::class, 'show']);
 //     ]);
 // });
 
-Route::get('/register', [AuthController::class, 'create']);
+Route::get('/register', [AuthController::class, 'create'])->middleware('guest');
 
 Route::post('/users', [AuthController::class, 'store']);
 
-Route::get('/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 
 Route::post('/users/authenticate', [AuthController::class, 'authenticate']);
 
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth');
