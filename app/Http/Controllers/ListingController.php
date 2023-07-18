@@ -48,6 +48,6 @@ class ListingController extends Controller
         Listing::create($validated);
 
         //redirect
-        return redirect('/');
+        return redirect('/')->with('form_success', 'Listing created successfully');
     }
 }
