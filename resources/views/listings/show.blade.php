@@ -49,5 +49,11 @@
             </div>
         </div>
     </x-card>
+    <x-card class="flex p-2 mt-4 space-x-6 max-w-[100px] mx-auto">
+        <a href="/listings/{{ $gig->id }}/edit">
+            <i class="fa-solid fa-pen-to-square"></i>
+            Edit
+        </a>
+    </x-card>
 </div>
 @endsection

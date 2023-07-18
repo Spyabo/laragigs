@@ -54,4 +54,36 @@ class ListingController extends Controller
         //redirect
         return redirect('/')->with('form_success', 'Listing created successfully');
     }
+
+    //show edit form
+    public function edit(Listing $gig)
+    {
+        return view('listings/edit', [
+            'gig' => $gig,
+        ]);
+    }
+
+    public function update(Listing $gig)
+    {
+        //validate
+        $validated = request()->validate([
+            'title' => 'required',
+            'company' => ['required'],
+            'location' => 'required',
+            'website' => 'required',
+            'email' => ['required', 'email'],
+            'tags' => 'required',
+            'description' => 'required',
+        ]);
+
+        if (request()->hasFile('logo')) {
+            $validated['logo'] = request()->file('logo')->store('logos', 'public');
+        }
+
+        //store
+        $gig->update($validated);
+
+        //redirect
+        return redirect('/listings/' . $gig->id)->with('form_success', 'Listing updated successfully');
+    }
 }

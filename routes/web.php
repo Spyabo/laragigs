@@ -14,6 +14,16 @@ use App\Http\Controllers\ListingController;
 |
  */
 
+// Common Resource Routes;
+// index: get and show all listings
+// show: get and show a single listing
+// create: show create form
+// store: store listing
+// edit: show edit form
+// update: update listing
+// destroy: destroy listing
+
+
 Route::get('/', [ListingController::class, 'index']);
 
 // Route::get('/', function () {
@@ -25,6 +35,10 @@ Route::get('/', [ListingController::class, 'index']);
 Route::get('/listings/create', [ListingController::class, 'create']);
 
 Route::post('/listings', [ListingController::class, 'store']);
+
+Route::get('/listings/{gig}/edit', [ListingController::class, 'edit']);
+
+Route::put('/listings/{gig}', [ListingController::class, 'update']);
 
 Route::get('/listings/{gig}', [ListingController::class, 'show']);
 
