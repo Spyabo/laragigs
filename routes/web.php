@@ -24,6 +24,8 @@ Route::get('/', [ListingController::class, 'index']);
 
 Route::get('/listings/create', [ListingController::class, 'create']);
 
+Route::post('/listings', [ListingController::class, 'store']);
+
 Route::get('/listings/{gig}', [ListingController::class, 'show']);
 
 // // Route::get('/listings/{id}', function ($id) {
